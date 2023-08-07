@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Checkout</title>
+<link rel="stylesheet" href={{url_for('static', filename='css/cart.css')}} />
+<link rel="stylesheet" href={{url_for('static', filename='css/topStyle.css') }} />
+</head>
+<body>
+<div id="title" href="/">
+	<p style="
+		color: white;
+		/* text-align: center; */
+		font-size: 30px;
+		margin-left: 25px;
+	" >FashionFinds</p>
+	<form style="
+    margin-left: 450px;
+">
+		<input id="searchBox" type="text" name="searchQuery">
+		<input id="searchButton" type="submit" value="Search">
+	</form>
+
+	{% if not loggedIn %}
+		<div id="signInButton">
+			<a class="link" href="/loginForm">Sign In</a>
+		</div>
+	{% else %}
+	<div class="dropdown">
+		<button class="dropbtn">Hello, <br>{{firstName}}</button>
+		<div class="dropdown-content">
+			<a href="/account/orders">Your orders</a>
+			<a href="/account/profile">Your profile</a>
+			<hr>
+			<a href="/logout">Sign Out</a>
+		</div>
+	</div>
+	{% endif %}
+	<div id="kart">
+		<a class="link" href="/cart">
+		<img src={{url_for('static', filename='images/shoppingCart.png')}} id="cartIcon" />
+		CART {{noOfItems}}
+		</a>
+	</div>
+</div>
+<div id="total">
+	<span id="subtotal">Proceed to pay Rs {{totalPrice}} </span> 
+</div>
+
+
+<form action="/pay" method="POST">
+	<script
+	  src="https://checkout.stripe.com/checkout.js"
+	  class="stripe-button"
+	  data-key="pk_test_51M2jAhEA7jhQIwhZZhgz7mIL4T03uZGJIHKvRmQV8aJWaRT1r30sgCwDLnEXTe3QFJ7o1zzgjaJmGncEmzpeHmFJ005VcTux22"
+	  data-name="FashionFinds eCommerce"
+	  data-description="payment checkout"  
+	  data-amount="Pay"      
+	  data-currency="eur">
+	</script>
+  </form>
+
+
+
+</body>
+</html>
+
