@@ -9,7 +9,7 @@ app.secret_key = 'random string'
 UPLOAD_FOLDER = 'static/uploads'
 ALLOWED_EXTENSIONS = set(['jpeg', 'jpg', 'png', 'gif'])
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-app.config['DATABASE_URL'] = 
+app.config['DATABASE_URL'] = f'postgres://kwhcfhvlrpijmt:681ffc060cb43dcb8ac9f2fe3c8bc6131911b8586f67669ab97dcb737faafa26@ec2-52-215-68-14.eu-west-1.compute.amazonaws.com:5432/dbtf1fgmcb3lkn'
 #Home page
 @app.route("/")
 def root():
